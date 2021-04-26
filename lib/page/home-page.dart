@@ -18,6 +18,8 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
+  double _currentSliderValue = 166;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -90,6 +92,27 @@ class _MyHomePageState extends State<MyHomePage> {
                         Row(
                             mainAxisAlignment: MainAxisAlignment.spaceAround,
                             children: [
+                              Text(
+                                "Estatura",
+                                style: TextStyle(
+                                    color: Colors.white30, fontSize: 20),
+                              )
+                            ]),
+                        Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                _currentSliderValue.round().toString(),
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold, fontSize: 50),
+                              ),
+                              Text("cm",
+                                  style: TextStyle(
+                                      color: Colors.white30, fontSize: 20))
+                            ]),
+                        Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
                               SliderTheme(
                                 data: SliderThemeData(
                                     activeTrackColor: Colors.white,
@@ -98,11 +121,18 @@ class _MyHomePageState extends State<MyHomePage> {
                                     inactiveTrackColor: Colors.white24,
                                     valueIndicatorColor: Colors.pink),
                                 child: Slider(
-                                  value: 166,
-                                  min: 50,
+                                  value: _currentSliderValue,
+                                  min: 100,
                                   max: 200,
-                                  label: "Estatura",
-                                  onChanged: (double value) {},
+                                  divisions: 100,
+                                  label:
+                                      _currentSliderValue.round().toString() +
+                                          " cm",
+                                  onChanged: (double value) {
+                                    setState(() {
+                                      _currentSliderValue = value;
+                                    });
+                                  },
                                 ),
                               )
                             ])
@@ -123,7 +153,13 @@ class _MyHomePageState extends State<MyHomePage> {
                     children: [
                       Row(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: [Text("Edad")]),
+                          children: [
+                            Text(
+                              "Peso",
+                              style: TextStyle(
+                                  color: Colors.white30, fontSize: 20),
+                            )
+                          ]),
                       Row(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
@@ -160,7 +196,13 @@ class _MyHomePageState extends State<MyHomePage> {
                     children: [
                       Row(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: [Text("Edad")]),
+                          children: [
+                            Text(
+                              "Edad",
+                              style: TextStyle(
+                                  color: Colors.white30, fontSize: 20),
+                            )
+                          ]),
                       Row(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
