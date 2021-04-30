@@ -12,6 +12,9 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   int edad = 18;
   int peso = 60;
+  String sexo = "";
+  int codeColorMujer = 0xFF101227;
+  int codeColorHombre = 0xFF101227;
 
   void _incrementEdad() {
     setState(() {
@@ -56,46 +59,64 @@ class _MyHomePageState extends State<MyHomePage> {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            Container(
-                margin: EdgeInsets.symmetric(vertical: 15),
-                height: 165,
-                width: 165,
-                decoration: BoxDecoration(
-                  color: const Color(0xFF101227),
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Padding(
-                          padding: const EdgeInsets.all(10),
-                          child:
-                              new Image.asset("assets/male.png", height: 70)),
-                      Text(
-                        "Hombre",
-                        style: TextStyle(color: Colors.white54, fontSize: 15),
-                      )
-                    ])),
-            Container(
-                margin: EdgeInsets.symmetric(vertical: 15),
-                height: 165,
-                width: 165,
-                decoration: BoxDecoration(
-                  color: const Color(0xFF1c1d32),
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Padding(
-                          padding: const EdgeInsets.all(10),
-                          child:
-                              new Image.asset("assets/female.png", height: 70)),
-                      Text(
-                        "Mujer",
-                        style: TextStyle(color: Colors.white54, fontSize: 15),
-                      )
-                    ])),
+            GestureDetector(
+              onTap: () {
+                setState(() {
+                  sexo = "Hombre";
+                  codeColorHombre = 0xFF1c1d32;
+                  codeColorMujer = 0xFF101227;
+                });
+              },
+              child: Container(
+                  margin: EdgeInsets.symmetric(vertical: 15),
+                  height: 165,
+                  width: 165,
+                  decoration: BoxDecoration(
+                    color: Color(codeColorHombre),
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Padding(
+                            padding: const EdgeInsets.all(10),
+                            child:
+                                new Image.asset("assets/male.png", height: 70)),
+                        Text(
+                          "Hombre",
+                          style: TextStyle(color: Colors.white54, fontSize: 15),
+                        )
+                      ])),
+            ),
+            GestureDetector(
+              onTap: () {
+                setState(() {
+                  sexo = "Mujer";
+                  codeColorMujer = 0xFF1c1d32;
+                  codeColorHombre = 0xFF101227;
+                });
+              },
+              child: Container(
+                  margin: EdgeInsets.symmetric(vertical: 15),
+                  height: 165,
+                  width: 165,
+                  decoration: BoxDecoration(
+                    color: Color(codeColorMujer),
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Padding(
+                            padding: const EdgeInsets.all(10),
+                            child: new Image.asset("assets/female.png",
+                                height: 70)),
+                        Text(
+                          "Mujer",
+                          style: TextStyle(color: Colors.white54, fontSize: 15),
+                        )
+                      ])),
+            ),
           ],
         ),
         Expanded(
