@@ -38,8 +38,9 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             Container(
-                height: 160,
-                width: 160,
+                margin: EdgeInsets.symmetric(vertical: 15),
+                height: 165,
+                width: 165,
                 decoration: BoxDecoration(
                   color: const Color(0xFF212122),
                   borderRadius: BorderRadius.circular(10),
@@ -48,17 +49,18 @@ class _MyHomePageState extends State<MyHomePage> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Padding(
-                          padding: const EdgeInsets.all(15.0),
+                          padding: const EdgeInsets.all(10),
                           child:
-                              new Image.asset("assets/male.png", height: 80)),
+                              new Image.asset("assets/male.png", height: 70)),
                       Text(
                         "Hombre",
                         style: TextStyle(color: Colors.white54, fontSize: 15),
                       )
                     ])),
             Container(
-                height: 160,
-                width: 160,
+                margin: EdgeInsets.symmetric(vertical: 15),
+                height: 165,
+                width: 165,
                 decoration: BoxDecoration(
                   color: const Color(0xFF212122),
                   borderRadius: BorderRadius.circular(10),
@@ -67,9 +69,9 @@ class _MyHomePageState extends State<MyHomePage> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Padding(
-                          padding: const EdgeInsets.all(15.0),
+                          padding: const EdgeInsets.all(10),
                           child:
-                              new Image.asset("assets/female.png", height: 80)),
+                              new Image.asset("assets/female.png", height: 70)),
                       Text(
                         "Mujer",
                         style: TextStyle(color: Colors.white54, fontSize: 15),
@@ -78,67 +80,67 @@ class _MyHomePageState extends State<MyHomePage> {
           ],
         ),
         Expanded(
-          child: Container(
-              margin: EdgeInsets.all(18),
-              decoration: BoxDecoration(
-                color: const Color(0xFF212122),
-                borderRadius: BorderRadius.circular(10),
-              ),
-              height: 160,
-              child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: [
-                          Text(
-                            "Estatura",
-                            style:
-                                TextStyle(color: Colors.white30, fontSize: 20),
-                          )
-                        ]),
-                    Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+            child: Container(
+          margin: EdgeInsets.all(15),
+          decoration: BoxDecoration(
+            color: const Color(0xFF212122),
+            borderRadius: BorderRadius.circular(10),
+          ),
+          height: 160,
+          child: Column(children: [
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 15),
+              child: Column(children: [
+                Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
                       Text(
-                        _currentSliderValue.round().toString(),
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 50),
-                      ),
-                      Text("cm",
-                          style: TextStyle(color: Colors.white30, fontSize: 20))
+                        "Estatura",
+                        style: TextStyle(color: Colors.white38, fontSize: 20),
+                      )
                     ]),
-                    Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: [
-                          SliderTheme(
-                            data: SliderThemeData(
-                                activeTrackColor: Colors.white,
-                                thumbColor: Colors.pink,
-                                overlayColor: Colors.pink.withOpacity(0.2),
-                                inactiveTrackColor: Colors.white24,
-                                valueIndicatorColor: Colors.pink),
-                            child: Slider(
-                              value: _currentSliderValue,
-                              min: 100,
-                              max: 200,
-                              divisions: 100,
-                              label: _currentSliderValue.round().toString() +
-                                  " cm",
-                              onChanged: (double value) {
-                                setState(() {
-                                  _currentSliderValue = value;
-                                });
-                              },
-                            ),
-                          )
-                        ])
-                  ])),
-        ),
+                Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+                  Text(
+                    _currentSliderValue.round().toString(),
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 50),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 20.0),
+                    child: Text("cm",
+                        style: TextStyle(color: Colors.white38, fontSize: 20)),
+                  )
+                ]),
+                SliderTheme(
+                  data: SliderThemeData(
+                      activeTrackColor: Colors.white,
+                      thumbColor: Colors.pink,
+                      overlayColor: Colors.pink.withOpacity(0.2),
+                      inactiveTrackColor: Colors.white38,
+                      valueIndicatorColor: Colors.pink),
+                  child: Slider(
+                    value: _currentSliderValue,
+                    min: 100,
+                    max: 250,
+                    divisions: 150,
+                    label: _currentSliderValue.round().toString() + " cm",
+                    onChanged: (double value) {
+                      setState(() {
+                        _currentSliderValue = value;
+                      });
+                    },
+                  ),
+                )
+              ]),
+            ),
+          ]),
+        )),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             Container(
-                height: 160,
-                width: 160,
+                margin: EdgeInsets.symmetric(vertical: 20),
+                height: 165,
+                width: 165,
                 decoration: BoxDecoration(
                   color: const Color(0xFF212122),
                   borderRadius: BorderRadius.circular(10),
@@ -180,8 +182,9 @@ class _MyHomePageState extends State<MyHomePage> {
                           ])
                     ])),
             Container(
-                height: 160,
-                width: 160,
+                margin: EdgeInsets.symmetric(vertical: 20),
+                height: 165,
+                width: 165,
                 decoration: BoxDecoration(
                   color: const Color(0xFF212122),
                   borderRadius: BorderRadius.circular(10),
