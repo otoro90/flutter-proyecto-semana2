@@ -10,11 +10,30 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
+  int edad = 18;
+  int peso = 60;
 
-  void _incrementCounter() {
+  void _incrementEdad() {
     setState(() {
-      _counter++;
+      edad++;
+    });
+  }
+
+  void _decreasedEdad() {
+    setState(() {
+      edad--;
+    });
+  }
+
+  void _decreasedPeso() {
+    setState(() {
+      peso--;
+    });
+  }
+
+  void _incrementPeso() {
+    setState(() {
+      peso++;
     });
   }
 
@@ -42,7 +61,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 height: 165,
                 width: 165,
                 decoration: BoxDecoration(
-                  color: const Color(0xFF212122),
+                  color: const Color(0xFF101227),
                   borderRadius: BorderRadius.circular(10),
                 ),
                 child: Column(
@@ -62,7 +81,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 height: 165,
                 width: 165,
                 decoration: BoxDecoration(
-                  color: const Color(0xFF212122),
+                  color: const Color(0xFF1c1d32),
                   borderRadius: BorderRadius.circular(10),
                 ),
                 child: Column(
@@ -83,7 +102,7 @@ class _MyHomePageState extends State<MyHomePage> {
             child: Container(
           margin: EdgeInsets.all(15),
           decoration: BoxDecoration(
-            color: const Color(0xFF212122),
+            color: const Color(0xFF1c1d32),
             borderRadius: BorderRadius.circular(10),
           ),
           height: 160,
@@ -139,114 +158,116 @@ class _MyHomePageState extends State<MyHomePage> {
           children: [
             Container(
                 margin: EdgeInsets.symmetric(vertical: 20),
-                height: 165,
-                width: 165,
+                height: 170,
+                width: 170,
                 decoration: BoxDecoration(
-                  color: const Color(0xFF212122),
+                  color: const Color(0xFF1c1d32),
                   borderRadius: BorderRadius.circular(10),
                 ),
-                child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: [
-                            Text(
-                              "Peso",
-                              style: TextStyle(
-                                  color: Colors.white30, fontSize: 20),
-                            )
-                          ]),
-                      Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: [
-                            Text(
-                              "38",
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold, fontSize: 50),
-                            )
-                          ]),
-                      Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: [
-                            FloatingActionButton(
-                              onPressed: _incrementCounter,
-                              child: Icon(Icons.add,
-                                  color: Colors.white, size: 32),
-                            ),
-                            FloatingActionButton(
-                              onPressed: _incrementCounter,
-                              child: Icon(Icons.add,
-                                  color: Colors.white, size: 32),
-                            )
-                          ])
-                    ])),
-            Container(
-                margin: EdgeInsets.symmetric(vertical: 20),
-                height: 165,
-                width: 165,
-                decoration: BoxDecoration(
-                  color: const Color(0xFF212122),
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: [
-                            Text(
-                              "Edad",
-                              style: TextStyle(
-                                  color: Colors.white30, fontSize: 20),
-                            )
-                          ]),
-                      Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: [
-                            Text(
-                              "38",
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold, fontSize: 50),
-                            )
-                          ]),
-                      Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: [
-                            FloatingActionButton(
-                              onPressed: _incrementCounter,
-                              child: Icon(Icons.add,
-                                  color: Colors.white, size: 32),
-                            ),
-                            FloatingActionButton(
-                              onPressed: _incrementCounter,
-                              child: Icon(Icons.add,
-                                  color: Colors.white, size: 32),
-                            )
-                          ])
-                    ])),
-          ],
-        ),
-        Padding(
-          padding: const EdgeInsets.all(0.0),
-          child: Container(
-              height: 80,
-              color: Colors.pink,
-              child: Column(children: [
-                Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 12),
+                  child: Column(children: [
+                    Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          Text(
+                            "Peso",
+                            style:
+                                TextStyle(color: Colors.white30, fontSize: 20),
+                          )
+                        ]),
+                    Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          Text(
+                            peso.toString(),
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 50),
+                          )
+                        ]),
+                    Row(mainAxisAlignment: MainAxisAlignment.center, children: [
                       Padding(
-                        padding: const EdgeInsets.all(15.0),
-                        child: Text(
-                          "Calcular",
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 20),
+                        padding: const EdgeInsets.symmetric(horizontal: 6),
+                        child: FloatingActionButton(
+                          onPressed: _decreasedPeso,
+                          child:
+                              Icon(Icons.remove, color: Colors.white, size: 32),
                         ),
                       ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 6),
+                        child: FloatingActionButton(
+                          onPressed: _incrementPeso,
+                          child: Icon(Icons.add, color: Colors.white, size: 32),
+                        ),
+                      )
                     ])
-              ])),
+                  ]),
+                )),
+            Container(
+                margin: EdgeInsets.symmetric(vertical: 20),
+                height: 170,
+                width: 170,
+                decoration: BoxDecoration(
+                  color: const Color(0xFF1c1d32),
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 12),
+                  child: Column(children: [
+                    Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          Text(
+                            "Edad",
+                            style:
+                                TextStyle(color: Colors.white30, fontSize: 20),
+                          )
+                        ]),
+                    Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          Text(
+                            edad.toString(),
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 50),
+                          )
+                        ]),
+                    Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 6),
+                        child: FloatingActionButton(
+                          onPressed: _decreasedEdad,
+                          child:
+                              Icon(Icons.remove, color: Colors.white, size: 32),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 6),
+                        child: FloatingActionButton(
+                          onPressed: _incrementEdad,
+                          child: Icon(Icons.add, color: Colors.white, size: 32),
+                        ),
+                      )
+                    ])
+                  ]),
+                )),
+          ],
         ),
+        Container(
+            height: 80,
+            color: Colors.pink,
+            child: Column(children: [
+              Row(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
+                Padding(
+                  padding: const EdgeInsets.all(15.0),
+                  child: Text(
+                    "Calcular",
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22),
+                  ),
+                ),
+              ])
+            ])),
       ],
     );
   }
