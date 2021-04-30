@@ -154,6 +154,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   data: SliderThemeData(
                       activeTrackColor: Colors.white,
                       thumbColor: Colors.pink,
+                      thumbShape: RoundSliderThumbShape(enabledThumbRadius: 15),
                       overlayColor: Colors.pink.withOpacity(0.2),
                       inactiveTrackColor: Colors.white38,
                       valueIndicatorColor: Colors.pink),
