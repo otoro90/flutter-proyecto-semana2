@@ -1,4 +1,4 @@
-# Calculadora del índice de masa corporal (IMC)
+# Calculadora del índice de masa corporal (IMC)  Pixel 3a API 30
 
 A new Flutter project.
 
