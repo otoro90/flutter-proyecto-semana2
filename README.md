@@ -2,6 +2,8 @@
 
 A new Flutter project.
 
+Maquetacion realizada para el dispositivo Pixel 3a API 30
+
 ## Getting Started
 
 This project is a starting point for a Flutter application.
