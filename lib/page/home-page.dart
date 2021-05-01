@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:imc/models/Categoria.dart';
+import 'package:imc/models/Resultado.dart';
+import 'package:imc/page/resultados.dart';
 
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key? key, required this.title}) : super(key: key);
@@ -15,6 +18,44 @@ class _MyHomePageState extends State<MyHomePage> {
   String sexo = "";
   int codeColorMujer = 0xFF101227;
   int codeColorHombre = 0xFF101227;
+  List<RangoCategoria> categorias = [
+    RangoCategoria(
+        textoIMC: "Bajo peso",
+        valorMinimoRango: 0,
+        valorMaximoRango: 18.4,
+        mensajeIMC: "Debes subir un poco mas de peso",
+        color: Colors.orange),
+    RangoCategoria(
+        textoIMC: "Peso normal",
+        valorMinimoRango: 18.5,
+        valorMaximoRango: 24.9,
+        mensajeIMC: "Tiene un peso corporal normal, ¡Buen trabajo!",
+        color: Colors.green),
+    RangoCategoria(
+        textoIMC: "Sobrepeso",
+        valorMinimoRango: 25,
+        valorMaximoRango: 29.9,
+        mensajeIMC: "Debes bajar un poco mas de peso",
+        color: Colors.yellow),
+    RangoCategoria(
+        textoIMC: "Obesidad grado I",
+        valorMinimoRango: 30,
+        valorMaximoRango: 34.9,
+        mensajeIMC: "Obesidad grado I, debes bajar de peso, cuida tu dieta",
+        color: Colors.orange),
+    RangoCategoria(
+        textoIMC: "Obesidad grado II",
+        valorMinimoRango: 35,
+        valorMaximoRango: 39.9,
+        mensajeIMC: "Obesidad grado II, debes bajar de peso, cuida tu dieta",
+        color: Colors.orange.shade900),
+    RangoCategoria(
+        textoIMC: "Obesidad grado III",
+        valorMinimoRango: 40,
+        valorMaximoRango: 999999,
+        mensajeIMC: "Obesidad grado III, debes bajar de peso, cuida tu dieta",
+        color: Colors.red),
+  ];
 
   void _incrementEdad() {
     setState(() {
@@ -40,7 +81,26 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
-  double _currentSliderValue = 166;
+  Resultado getResultado() {
+    double resultadoIMC = peso / ((altura / 100) * (altura / 100));
+    Resultado resultado = new Resultado(
+        resultadoIMC: 0, mensajeIMC: "", textoIMC: "", color: Colors.white);
+    ;
+    categorias.forEach((categoria) {
+      if (categoria.valorMinimoRango <= resultadoIMC &&
+          categoria.valorMaximoRango >= resultadoIMC) {
+        resultado = new Resultado(
+            resultadoIMC: resultadoIMC,
+            mensajeIMC: categoria.mensajeIMC,
+            textoIMC: categoria.textoIMC,
+            color: categoria.color);
+      }
+    });
+
+    return resultado;
+  }
+
+  double altura = 166;
 
   @override
   Widget build(BuildContext context) {
@@ -141,7 +201,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     ]),
                 Row(mainAxisAlignment: MainAxisAlignment.center, children: [
                   Text(
-                    _currentSliderValue.round().toString(),
+                    altura.round().toString(),
                     style: TextStyle(fontWeight: FontWeight.bold, fontSize: 50),
                   ),
                   Padding(
@@ -159,14 +219,14 @@ class _MyHomePageState extends State<MyHomePage> {
                       inactiveTrackColor: Colors.white38,
                       valueIndicatorColor: Colors.pink),
                   child: Slider(
-                    value: _currentSliderValue,
+                    value: altura,
                     min: 100,
                     max: 250,
                     divisions: 150,
-                    label: _currentSliderValue.round().toString() + " cm",
+                    label: altura.round().toString() + " cm",
                     onChanged: (double value) {
                       setState(() {
-                        _currentSliderValue = value;
+                        altura = value;
                       });
                     },
                   ),
@@ -276,20 +336,34 @@ class _MyHomePageState extends State<MyHomePage> {
                 )),
           ],
         ),
-        Container(
-            height: 80,
-            color: Colors.pink,
-            child: Column(children: [
-              Row(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
-                Padding(
-                  padding: const EdgeInsets.all(15.0),
-                  child: Text(
-                    "Calcular",
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22),
-                  ),
-                ),
-              ])
-            ])),
+        GestureDetector(
+          onTap: () {
+            setState(() {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) =>
+                          ResultadosPage(resultado: getResultado())));
+            });
+          },
+          child: Container(
+              height: 80,
+              color: Colors.pink,
+              child: Column(children: [
+                Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(15.0),
+                        child: Text(
+                          "Calcular",
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 22),
+                        ),
+                      ),
+                    ])
+              ])),
+        ),
       ],
     );
   }
