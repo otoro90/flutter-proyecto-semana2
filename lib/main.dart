@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
         brightness: Brightness.dark,
         primaryColor: Colors.black,
         accentColor: Colors.white24,
-        canvasColor: Color(0x93090E21),
+        canvasColor: Color(0xFF090E21),
       ),
       home: MyHomePage(title: 'Calculadora IMC'),
     );
