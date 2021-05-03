@@ -69,15 +69,15 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
-  void _decreasedPeso() {
-    setState(() {
-      peso--;
-    });
-  }
-
   void _incrementPeso() {
     setState(() {
       peso++;
+    });
+  }
+
+  void _decreasedPeso() {
+    setState(() {
+      peso--;
     });
   }
 
@@ -85,7 +85,7 @@ class _MyHomePageState extends State<MyHomePage> {
     double resultadoIMC = peso / ((altura / 100) * (altura / 100));
     Resultado resultado = new Resultado(
         resultadoIMC: 0, mensajeIMC: "", textoIMC: "", color: Colors.white);
-    ;
+
     categorias.forEach((categoria) {
       if (categoria.valorMinimoRango <= resultadoIMC &&
           categoria.valorMaximoRango >= resultadoIMC) {
